@@ -1,0 +1,30 @@
+[
+  {
+    "name": "laravel_session",
+    "value": "eyJpdiI6IlRxYnZkRXNtdG8vRE8ySU9hZERnUkE9PSIsInZhbHVlIjoiemFldWozUTZWeFUzT3dyOVZJMHFKdkxIVlJSckNYekZUUTRWQTRsRXo5OFNJVFkrVE5TVzlQZE40RWJ1anRFR3c3SUQ2SVVFbWIrYUFnSWxMNUVYeHlDQVZwZlVRMXp2RWJCdmZLNVRjUmx3WUg0U2NTK1lFMnVRT1gvb1dsTU8iLCJtYWMiOiIyYzdlMTNjYWEyYzZhMWYxOGU5ZWJiY2UwYTY4YmJmNTg1ZTQyOTc4ZDc2MmIxNjExNDMxOWEyZjcyMDE3MTRhIiwidGFnIjoiIn0%3D",
+    "domain": "rivernorthmassage.quickernotes2.com",
+    "path": "/",
+    "expires": -1,
+    "size": 357,
+    "httpOnly": true,
+    "secure": false,
+    "session": true,
+    "sameParty": false,
+    "sourceScheme": "Secure",
+    "sourcePort": 443
+  },
+  {
+    "name": "XSRF-TOKEN",
+    "value": "eyJpdiI6InJmaWtjU1ErUFlob2JJR1hyTGd5QUE9PSIsInZhbHVlIjoiNHdPMnl6QlZ1Kzd5OUNKNTVRcDY2c2NqQVJMeWZCSm44OWorTmtCV2VyZWY0ZnhVT0NCcEFPNTJWRDRQOG1md0pYVVRGVlZUMjNHQ24xTHB1QmYrMUdqWkRuZEtuZUVRUzdROUsxdVphTDh0b2dYRkRoU3B3UFpMMm0xdjBmWFYiLCJtYWMiOiJiYjY0OTE5MTYwMzNhYzhiZjA2M2I5ZDhkNDliNTNmY2IxNWY4Y2VkMGViMjJjNzFkNzkwMDFhZGJkMDE4Mjc2IiwidGFnIjoiIn0%3D",
+    "domain": "rivernorthmassage.quickernotes2.com",
+    "path": "/",
+    "expires": 1652042275.46083,
+    "size": 352,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameParty": false,
+    "sourceScheme": "Secure",
+    "sourcePort": 443
+  }
+]
