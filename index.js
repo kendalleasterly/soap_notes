@@ -3,11 +3,11 @@ const {test} = require("./puppeteer")
 let clients = require("./clients.json")
 
 
-test()
+// test()
 
 
 
 
-// clients = sanatizedClients(clients)
-// clients = sortClients(clients).reverse()
-// console.log(clients)
+clients = sanatizedClients(clients)
+clients = sortClients(clients)
+console.log(clients)

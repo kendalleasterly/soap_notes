@@ -3,6 +3,7 @@ const dotenv = require("dotenv")
 const fs = require("fs").promises
 
 dotenv.config()
+const url = "https://rivernorthmassage.quickernotes2.com/app/unfinished-notes"
 
 async function test() {
 	const browser = await puppeteer.launch({
@@ -11,7 +12,7 @@ async function test() {
 	})
 
 	const page = await browser.newPage()
-	const url = "https://rivernorthmassage.quickernotes2.com/app/unfinished-notes"
+	
 	await writeCookies(page)
 	await page.goto(url, {
 		waitUntil: "networkidle2",
@@ -21,26 +22,47 @@ async function test() {
 	const cookiesString = await fs.readFile("./cookies.json")
 	const cookies = JSON.parse(cookiesString)
 
-	console.log(new Date().getTime() / 1000, cookies[1].expires)
-
 	if (new Date().getTime() / 1000 >= cookies[1].expires) {
         await logIn(page)
 	}
 
-    const clients = await getClients(page)
+	const clients = await setUnfinishedClients(page, 8, 10)
+	console.log(clients)
 
-    console.log(clients)
+	const oldClientsString = await fs.readFile("./unfinishedClients.json")
+	const oldClients = JSON.parse(oldClientsString)
+
+
+	fs.writeFile("./unfinishedClients.json", JSON.stringify(clients.concat(oldClients), null, 2))
 
 	
 }
 
 //MARK: Helper functions
 
+async function setUnfinishedClients(page, i, stop) {
+	await page.goto(url + "?page=" + (i))
+	let clients = await getClients(page)
+	console.log(clients[0])
+
+	if (i == stop) {
+		return clients
+	} else {
+		const clientsOnPages = await setUnfinishedClients(page, i + 1, stop)
+
+		clients = clients.concat(clientsOnPages)
+
+		return clients
+	}
+	
+	//she can create the note on the day of the client or any day after the client was seen
+}
+
 async function getClients(page) {
 
-    const clientsElements = await page.$$("li")
+	let clients = []
 
-    let clients = []
+    const clientsElements = await page.$$("li")
 
     const promises = clientsElements.map(async (clientElement) => {
 		const name = await clientElement.$eval("div.text-sm > a", (element) => {
@@ -66,7 +88,7 @@ async function getClients(page) {
 
 	await Promise.all(promises)
 
-    return clients
+	return clients
 
 }
 
@@ -79,9 +101,10 @@ async function logIn(page) {
 
 	await page.click("[type=submit]")
 	await page.waitForSelector("ul")
-
 	console.log("got selector, saving cookies")
-	setTimeout(() => saveCookies(page), 10 * 1000)
+	await saveCookies(page)
+
+	
 }
 
 async function saveCookies(page) {
