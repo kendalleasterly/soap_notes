@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "npx tsc --project tsconfig.json && node index.js"
   },
   "author": "Kendall Easterly",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "node-osascript": "^2.1.0",
     "nodemon": "^2.0.16",
     "puppeteer": "^13.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
   }
 }
