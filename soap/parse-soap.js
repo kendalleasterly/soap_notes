@@ -12,7 +12,7 @@ const osascript = require("node-osascript");
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
         let note = "";
-        text.split("\\n").map(line => note += line);
+        text.split("\\n").map(line => note += "\n" + line);
         let parsedNotes = [];
         const clientNotes = note.split("\n\n");
         const promises = clientNotes.map((rawSubNote) => __awaiter(this, void 0, void 0, function* () {

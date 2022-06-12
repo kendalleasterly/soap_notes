@@ -3,7 +3,7 @@ const osascript = require("node-osascript")
 async function parse(text: string) {
 
     let note = ""
-    text.split("\\n").map(line => note += line)
+    text.split("\\n").map(line => note += "\n" + line)
 
     let parsedNotes: SoapNote[] = []
 
