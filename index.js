@@ -34,6 +34,6 @@ async function getInput() {
 
 // main()
 
-const notUploaded = generateNotUploaded()
+// const notUploaded = generateNotUploaded()
 
 console.log(sortClients(clients))

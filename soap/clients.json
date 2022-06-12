@@ -1,11 +1,11 @@
 {
   "Giselle-2022-04-28": {
-    "objectives": "traps rhomboids esg lev scap ql, glutes quads R thigh +",
-    "date": "2022-04-28",
-    "subject": " numbness and tingling in lateral R thigh ",
     "name": "Giselle",
+    "subject": "numbness and tingling in lateral R thigh",
+    "objectives": "traps rhomboids esg lev scap ql, glutes quads R thigh +",
+    "action": "focus on back and R thigh",
     "plan": "stretch",
-    "action": "focus on back and R thigh"
+    "date": "2022-04-28"
   },
   "Yuna-2022-03-26": {
     "objectives": "traps and QL, glutes ",
@@ -232,12 +232,12 @@
     "action": "compressions on glutes"
   },
   "Maria-2022-04-28": {
-    "objectives": "traps esg rhomboids all lev scap neck pecs R Rtc forearms triceps biceps ",
-    "date": "2022-04-28",
-    "subject": " same as last time work some pecs into session; only UB",
     "name": "Maria",
+    "subject": "same as last time work some pecs into session; only UB",
+    "objectives": "traps esg rhomboids all lev scap neck pecs R Rtc forearms triceps biceps",
+    "action": "only UB DT",
     "plan": "N/A",
-    "action": "only UB DT"
+    "date": "2022-04-28"
   },
   "debbie-2022-04-02": {
     "objectives": ", traps esg lats (TPs) glutes hamstrings calves ",
@@ -280,12 +280,12 @@
     "action": "focus on problem areas"
   },
   "amanda-2022-04-28": {
-    "objectives": ", traps (L+) rhomboids (pecs) esg ql all tight ",
-    "date": "2022-04-28",
-    "subject": " tight upper back from sitting in “weird chair” ",
     "name": "amanda",
+    "subject": "tight upper back from sitting in “weird chair”",
+    "objectives": "traps (L+) rhomboids (pecs) esg ql all tight",
+    "action": "DT Only on back and some neck in prone",
     "plan": "N/A",
-    "action": "DT Only on back and some neck in prone "
+    "date": "2022-04-28"
   },
   "Linda-2022-03-29": {
     "objectives": "posterior aspect of neck, traps suuupeer tiiight, esg tight released a lot during ssssion , hyper kyphosis in upper back ",
@@ -296,12 +296,12 @@
     "action": "focus on problem areas"
   },
   "Sarah-2022-04-26": {
-    "objectives": "super tight quads, L quads more anterior a lot of medial thigh, R thigh anterior lateral and medial muscles ",
-    "date": "2022-04-26",
-    "subject": " Ran half marathon two days ago tight quads ",
     "name": "Sarah",
-    "plan": "N/A",
-    "action": "focus on problem areas"
+    "subject": "Ran half marathon two days ago tight quads",
+    "objectives": "super tight quads, L quads more anterior a lot of medial thigh, R thigh anterior lateral and medial muscles",
+    "action": "focus on problem areas",
+    "plan": "stretch",
+    "date": "2022-04-26"
   },
   "Dennis-2022-04-14": {
     "objectives": "Dennis: Came in w wife, upper back lower back and glutes",
@@ -368,12 +368,12 @@
     "action": "DT no quads or anterior arm "
   },
   "Brandon-2022-04-28": {
-    "objectives": "glute med suuupppeerrr tiight BL, QL, scoliosis and rotation in LB ",
-    "date": "2022-04-28",
-    "subject": " lower back tightness originating at glutes ",
     "name": "Brandon",
+    "subject": "lower back tightness originating at glutes",
+    "objectives": "glute med suuupppeerrr tiight BL, QL, scoliosis and rotation in LB",
+    "action": "only work on flute med and back focus on LB",
     "plan": "stretch",
-    "action": "only work on flute med and back focus on LB "
+    "date": "2022-04-28"
   },
   "narumi-2022-04-14": {
     "objectives": "traps super tight but released a lot during session, rhomboids tight released some, Lower esg and ql tight not enough work, glutes hamstrings calves tight not enough work, tib anterior and quads tight not enough work, pecs need work, neck tight ",
@@ -448,12 +448,12 @@
     "action": "DT posterior body and neck "
   },
   "Stephen-2022-04-26": {
-    "objectives": "tight glute med and tfl",
-    "date": "2022-04-26",
-    "subject": " stiff hips during hip abduction and circumduction ",
     "name": "Stephen",
-    "plan": "stretching while working on tfl (hanging leg off of table) ",
-    "action": "super deep work on glute med and tfl "
+    "subject": "ripe hips during hip abduction and circumduction",
+    "objectives": "tight glute med and tfl",
+    "action": "super deep work on glute med and tfl ",
+    "plan": "stretching while working on tfl (hanging leg off of table)",
+    "date": "2022-04-26"
   },
   "Grace-2022-05-03": {
     "objectives": "traps esg rhomboids ql neck and pecs still very tight was able to work through some of the tissue during session",
@@ -528,12 +528,12 @@
     "action": "DT on problem areas "
   },
   "Melissa-2022-04-26": {
-    "objectives": "Entire back super tight esg QL traps rhomboids RTC was able to release during session, Pecs tight L + , neck L+",
-    "date": "2022-04-26",
-    "subject": " L side of neck, back from lifting mom",
     "name": "Melissa",
+    "subject": "L side of neck, back from lifting mom",
+    "objectives": "Entire back super tight esg QL traps rhomboids RTC was able to release during session, Pecs tight L +, neck L+",
+    "action": "focus on problem areas",
     "plan": "N/A",
-    "action": "focus on problem areas"
+    "date": "2022-04-26"
   },
   "martha-2022-03-17": {
     "objectives": "traps tender, can’t take deep pressure on back, calves tight, neck tight can’t access bc of hump",
