@@ -1,6 +1,6 @@
 const fs = require("fs").promises
-const soapedClientsJSON = require("./clients.json")
-const unfinishedClients = require("./unfinishedClients.json")
+const soapedClientsJSON = require("./soap/clients.json")
+const indexedClients = require("./indexing/indexedClients.json")
 
 function sanatizedClients(clientsObj) {
 	let newClientsObj = {}
@@ -38,9 +38,9 @@ function matchClients() {
 	let matches = []
 
 	Object.values(soapedClientsJSON).map((sClient) => {
-		unfinishedClients.map((uClient) => {
-			if (uClient.date == sClient.date) {
-				if (uClient.name.toLowerCase().includes(sClient.name.toLowerCase())) {
+		indexedClients.map((iClient) => {
+			if (iClient.date == sClient.date) {
+				if (iClient.name.toLowerCase().includes(sClient.name.toLowerCase())) {
 					//we've found a match
 
 					let match = sClient
@@ -50,7 +50,7 @@ function matchClients() {
 
 					match = {
 						...match,
-						...uClient,
+						...iClient,
 					}
 
                     matches.push(match)

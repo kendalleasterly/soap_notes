@@ -1,9 +1,41 @@
+const finishedClients = require("../uploading/finishedClients.json")
+const indexedClients = require("./indexedClients.json")
+const fs = require("fs").promises
+
+async function indexClients() {
+
+	let newIndexedClients = {}
+
+	indexedClients.map(client => {
+
+		const id = client.name.split(" ")[0] + "-" + client.date
+		
+		newIndexedClients[id] = client
+
+	})
+
+	await fs.writeFile(
+		"./indexing/indexedClients.json",
+		JSON.stringify(newIndexedClients, null, 2)
+	);
+
+}
+
 async function setUnfinishedClients(page, i, stop) {
 	await page.goto(url + "?page=" + i);
 	let clients = await getClients(page);
 	console.log(clients[0]);
 
-	if (i == stop) {
+	if (finishedClients.includes(clients[0].link)) {
+
+		let newClients = []
+
+		clients.map(client => {
+			if (!finishedClients.includes(client.link)) newClients.push(client)
+		})
+
+		return clients //may include new, go through in next
+	} else if (i == stop) {
 		return clients;
 	} else {
 		const clientsOnPages = await setUnfinishedClients(page, i + 1, stop);
@@ -53,4 +85,4 @@ async function getClients(page) {
 	return clients;
 }
 
-module.exports = {setUnfinishedClients}
+module.exports = {indexClients};

@@ -83,7 +83,6 @@ function parse(text) {
         }));
         yield Promise.all(promises);
         return parsedNotes;
-        // const name = note.split(":")[0]
     });
 }
 function updateObjectives(currentObjectives, string) {

@@ -1,11 +1,12 @@
 const puppeteer = require("puppeteer")
 const dotenv = require("dotenv")
 const fs = require("fs").promises
+const cookies = require("./cookies.json")
 
 dotenv.config()
 const url = "https://rivernorthmassage.quickernotes2.com/app/unfinished-notes"
 
-async function main(func) {
+async function startSession(func) {
 	const browser = await puppeteer.launch({
 		headless: false,
 		defaultViewport: null,
@@ -18,12 +19,8 @@ async function main(func) {
 		waitUntil: "networkidle2",
 	})
 
-	// const cookies = await page.cookies()
-	const cookiesString = await fs.readFile("./cookies.json")
-	const cookies = JSON.parse(cookiesString)
-
 	if (new Date().getTime() / 1000 >= cookies[1].expires) {
-		// await logIn(page)
+		await logIn(page)
 	}
 
 	func(page)
@@ -45,16 +42,15 @@ async function logIn(page) {
 
 async function saveCookies(page) {
 	const cookies = await page.cookies()
-	console.log(cookies)
 
-	await fs.writeFile("./cookies.json", JSON.stringify(cookies, null, 2))
+	await fs.writeFile("./puppeteer/cookies.json", JSON.stringify(cookies, null, 2))
 }
 
 async function writeCookies(page) {
-	const cookiesString = await fs.readFile("./cookies.json")
+	const cookiesString = await fs.readFile("./puppeteer/cookies.json");
 	const cookies = JSON.parse(cookiesString)
 
 	await page.setCookie(...cookies)
 }
 
-module.exports = { main }
+module.exports = {startSession};

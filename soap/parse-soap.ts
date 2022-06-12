@@ -98,11 +98,6 @@ async function parse(text: string) {
     await Promise.all(promises)
 
     return parsedNotes
-
-
-
-    // const name = note.split(":")[0]
-
 }
 
 function updateObjectives(currentObjectives:string, string:string) {
