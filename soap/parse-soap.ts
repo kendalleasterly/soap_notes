@@ -1,10 +1,37 @@
 const osascript = require("node-osascript")
 const fs = require("fs").promises
 
+async function parseAndAdd(text: string) {
+    const date = text.split("~")[0]
+
+    const parsedNotes = await parse(text.split("~")[1])
+
+    let newClients: any = {}
+
+    parsedNotes.map(note => {
+        const id = note.name + "-" + date
+        newClients[id] = {
+            ...note,
+            date
+        }
+    })
+
+    const existingClientsString = await fs.readFile("./soap/clients.json")
+    const existingClients = JSON.parse(existingClientsString)
+
+    const totalClients = {
+        ...existingClients,
+        ...newClients
+    }
+
+    await fs.writeFile("./soap/clients.json", JSON.stringify(totalClients, null, 2))
+}
+
 async function parse(text: string) {
 
     let note = ""
     text.split("\\n").map(line => note += "\n" + line)
+    note = note.trim()
 
     let parsedNotes: SoapNote[] = []
 
@@ -149,4 +176,4 @@ type SoapNote = {
     plan: string;
 }
 
-module.exports = { parse }
+module.exports = { parseAndAdd }

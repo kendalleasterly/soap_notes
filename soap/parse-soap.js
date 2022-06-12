@@ -10,10 +10,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const osascript = require("node-osascript");
 const fs = require("fs").promises;
+function parseAndAdd(text) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const date = text.split("~")[0];
+        const parsedNotes = yield parse(text.split("~")[1]);
+        let newClients = {};
+        parsedNotes.map(note => {
+            const id = note.name + "-" + date;
+            newClients[id] = Object.assign(Object.assign({}, note), { date });
+        });
+        const existingClientsString = yield fs.readFile("./soap/clients.json");
+        const existingClients = JSON.parse(existingClientsString);
+        const totalClients = Object.assign(Object.assign({}, existingClients), newClients);
+        yield fs.writeFile("./soap/clients.json", JSON.stringify(totalClients, null, 2));
+    });
+}
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
         let note = "";
         text.split("\\n").map(line => note += "\n" + line);
+        note = note.trim();
         let parsedNotes = [];
         const clientNotes = note.split("\n\n");
         const promises = clientNotes.map((rawSubNote) => __awaiter(this, void 0, void 0, function* () {
@@ -118,4 +134,4 @@ function showMenu(last, secondToLast) {
         });
     });
 }
-module.exports = { parse };
+module.exports = { parseAndAdd };

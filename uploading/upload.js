@@ -1,7 +1,7 @@
 const {matchClients} = require("../clients");
 const finishedClients = require("./finishedClients.json");
 
-async function main(page) {
+async function matchAndUpload(page) {
 	const matches = matchClients();
 
 	let clientsToUpload = [];
@@ -73,4 +73,4 @@ function clean(string) {
 	}
 }
 
-module.exports = {main};
+module.exports = {matchAndUpload};

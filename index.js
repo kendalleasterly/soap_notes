@@ -1,35 +1,39 @@
-const fs = require("fs/promises")
+const {startSession} = require("./puppeteer/puppeteer");
+const {indexClients} = require("./indexing/index-clients");
+const {parseAndAdd} = require("./soap/parse-soap");
+const { generateNotUploaded, sortClients } = require("./clients");
+const clients = require("./soap/clients.json")
 
-const { parse } = require("./soap/parse-soap");
-const {startSession} = require("./puppeteer/puppeteer")
-const {indexClients} = require("./indexing/index-clients")
+const readline = require("readline").createInterface({
+	input: process.stdin,
+	output: process.stdout,
+});
 
-startSession(indexClients)
+async function main() {
+	const input = await getInput();
 
-// const readline = require("readline").createInterface({
-// 	input: process.stdin,
-// 	output: process.stdout,
-// });
+	if (input == "index") {
+		startSession(indexClients);
+	} else {
+		await parseAndAdd(input);
 
-// async function getInput() {
-// 	return new Promise((resolve, reject) => {
-// 		readline.question("", (input) => {
-//             resolve(input);
-            
-// 			readline.close();
-// 		});
-// 	});
-// }
+		//make sure the parsing file puts this into the database
+	}
+}
 
-// getInput().then(async stuff => {
+async function getInput() {
+	return new Promise((resolve, reject) => {
+		readline.question("", (input) => {
+			resolve(input);
 
-// 	if (stuff == "index") {
-		
-// 	} else {
-// 		const notes = await parse(stuff);
-// 		console.log(notes);
-		
-		
-// 		//make sure the parsing file puts this into the database
-// 	}
-// })
+			readline.close();
+		});
+	});
+}
+
+
+// main()
+
+const notUploaded = generateNotUploaded()
+
+console.log(sortClients(clients))

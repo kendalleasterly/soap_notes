@@ -23,7 +23,9 @@ async function startSession(func) {
 		await logIn(page)
 	}
 
-	func(page)
+	await func(page)
+
+	await browser.close()
 }
 
 //MARK: Helper functions

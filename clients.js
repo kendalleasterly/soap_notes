@@ -1,6 +1,18 @@
 const fs = require("fs").promises
 const soapedClientsJSON = require("./soap/clients.json")
 const indexedClients = require("./indexing/indexedClients.json")
+const finishedClients = require("./uploading/finishedClients.json")
+
+function generateNotUploaded() {
+
+	let notUploaded = []
+
+	Object.values(indexedClients).map(client => {
+		if (!finishedClients.includes(client.link)) notUploaded.push(client)
+	})
+
+	return notUploaded
+}
 
 function sanatizedClients(clientsObj) {
 	let newClientsObj = {}
@@ -61,4 +73,9 @@ function matchClients() {
     return matches
 }
 
-module.exports = { sanatizedClients, sortClients, matchClients }
+module.exports = {
+	sanatizedClients,
+	sortClients,
+	matchClients,
+	generateNotUploaded
+};

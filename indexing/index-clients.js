@@ -1,6 +1,5 @@
 const { sortClients } = require("../clients");
 const { url } = require("../puppeteer/puppeteer");
-const finishedClients = require("../uploading/finishedClients.json")
 const indexedClients = require("./indexedClients.json")
 const fs = require("fs").promises
 
