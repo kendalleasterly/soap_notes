@@ -1,4 +1,5 @@
 const osascript = require("node-osascript")
+const fs = require("fs").promises
 
 async function parse(text: string) {
 

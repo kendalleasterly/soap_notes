@@ -1,43 +1,51 @@
+const { sortClients } = require("../clients");
+const { url } = require("../puppeteer/puppeteer");
 const finishedClients = require("../uploading/finishedClients.json")
 const indexedClients = require("./indexedClients.json")
 const fs = require("fs").promises
 
-async function indexClients() {
+async function indexClients(page) {
+	const rawClients = await setUnfinishedClients(page, 1, 4)
 
-	let newIndexedClients = {}
-
-	indexedClients.map(client => {
-
-		const id = client.name.split(" ")[0] + "-" + client.date
-		
-		newIndexedClients[id] = client
-
+	let clients = {}
+	rawClients.map(rawClient => {
+		const id = rawClient.name.split(" ")[0] + "-" + rawClient.date
+		clients[id] = rawClient
 	})
+	
+	console.log(clients);
 
-	await fs.writeFile(
-		"./indexing/indexedClients.json",
-		JSON.stringify(newIndexedClients, null, 2)
-	);
+	const totalList = {
+		...indexedClients,
+		...clients
+	}
 
+	await fs.writeFile("./indexing/indexedClients.json", JSON.stringify(totalList, null, 2))
 }
 
 async function setUnfinishedClients(page, i, stop) {
 	await page.goto(url + "?page=" + i);
 	let clients = await getClients(page);
-	console.log(clients[0]);
+	clients = sortClients(clients)
 
-	if (finishedClients.includes(clients[0].link)) {
+	const first = clients[0]; //also the earliest one after sorting
+	const firstID = first.name.split(" ")[0] + "-" + first.date
+	console.log(firstID, first);
 
-		let newClients = []
+	if (Object.keys(indexedClients).includes(firstID)) {
+		console.log("found outdated")
+		let newClients = [];
 
-		clients.map(client => {
-			if (!finishedClients.includes(client.link)) newClients.push(client)
-		})
+		clients.map((client) => {
+			if (!Object.keys(indexedClients).includes(client.name.split(" ")[0] + "-" + client.date)) newClients.push(client);
+		});
 
-		return clients //may include new, go through in next
+		return newClients; //may include new, go through in next
 	} else if (i == stop) {
+		console.log("reached stop");
 		return clients;
 	} else {
+		console.log("neither")
 		const clientsOnPages = await setUnfinishedClients(page, i + 1, stop);
 
 		clients = clients.concat(clientsOnPages);

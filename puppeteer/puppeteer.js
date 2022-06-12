@@ -53,4 +53,4 @@ async function writeCookies(page) {
 	await page.setCookie(...cookies)
 }
 
-module.exports = {startSession};
+module.exports = {startSession, url};

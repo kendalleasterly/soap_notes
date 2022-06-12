@@ -1,29 +1,35 @@
 const fs = require("fs/promises")
 
 const { parse } = require("./soap/parse-soap");
+const {startSession} = require("./puppeteer/puppeteer")
+const {indexClients} = require("./indexing/index-clients")
 
-// startSession(main)
+startSession(indexClients)
 
-// indexClients()
+// const readline = require("readline").createInterface({
+// 	input: process.stdin,
+// 	output: process.stdout,
+// });
 
-const readline = require("readline").createInterface({
-	input: process.stdin,
-	output: process.stdout,
-});
-
-async function getInput() {
-	return new Promise((resolve, reject) => {
-		readline.question("", (input) => {
-            resolve(input);
+// async function getInput() {
+// 	return new Promise((resolve, reject) => {
+// 		readline.question("", (input) => {
+//             resolve(input);
             
-			readline.close();
-		});
-	});
-}
+// 			readline.close();
+// 		});
+// 	});
+// }
 
-getInput().then(async stuff => {
-    const notes = await parse(stuff)
-    console.log(notes)
-    fs.writeFile("./output.json", JSON.stringify(notes, null, 2))
-    
-})
+// getInput().then(async stuff => {
+
+// 	if (stuff == "index") {
+		
+// 	} else {
+// 		const notes = await parse(stuff);
+// 		console.log(notes);
+		
+		
+// 		//make sure the parsing file puts this into the database
+// 	}
+// })

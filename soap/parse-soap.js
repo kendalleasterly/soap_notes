@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const osascript = require("node-osascript");
+const fs = require("fs").promises;
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
         let note = "";

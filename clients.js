@@ -25,10 +25,9 @@ function sanatizedClients(clientsObj) {
 }
 
 function sortClients(clientsObj) {
-	Object.keys(clientsObj).forEach((key) => console.log(key))
 
 	const newArr = Object.values(clientsObj).sort((a, b) => {
-		return new Date(a.date).getTime() - new Date(b.date).getTime()
+		return new Date(b.date).getTime() - new Date(a.date).getTime()
 	})
 
 	return newArr.reverse()
