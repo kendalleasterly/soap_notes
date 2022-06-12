@@ -59,8 +59,8 @@ function parse(text) {
             }
             let plan = "";
             let action = "";
-            const planWords = ["stretch", "come back", "N/A"];
-            const actionWords = ["DT", "focus", "deep tissue", "worked on"];
+            const planWords = ["stretch", "come back", "n/a"];
+            const actionWords = ["dt", "focus", "deep tissue", "worked on"];
             const shouldStretchWords = ["glute", "quad", "hamstring", "calve"];
             if (includes(last, planWords) || includes(secondToLast, actionWords)) {
                 plan = last;
@@ -114,7 +114,7 @@ function clean(text) {
 function includes(string, searches) {
     let doesInclude = false;
     searches.map(search => {
-        if (string.includes(search))
+        if (string.toLowerCase().includes(search))
             doesInclude = true;
     });
     return doesInclude;

@@ -76,8 +76,8 @@ async function parse(text: string) {
         let plan = ""
         let action: any = ""
 
-        const planWords = ["stretch", "come back", "N/A"]
-        const actionWords = ["DT", "focus", "deep tissue", "worked on"]
+        const planWords = ["stretch", "come back", "n/a"]
+        const actionWords = ["dt", "focus", "deep tissue", "worked on"]
         const shouldStretchWords = ["glute", "quad", "hamstring", "calve"]
 
         if (includes(last, planWords) || includes(secondToLast, actionWords)) {
@@ -144,7 +144,7 @@ function includes(string: string, searches: string[]) {
 
     let doesInclude = false
     searches.map(search => {
-        if (string.includes(search)) doesInclude = true
+        if (string.toLowerCase().includes(search)) doesInclude = true
     })
 
     return doesInclude

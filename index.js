@@ -34,6 +34,4 @@ async function getInput() {
 
 // main()
 
-// const notUploaded = generateNotUploaded()
-
-console.log(sortClients(clients))
+console.log(sortClients(clients).reverse())
