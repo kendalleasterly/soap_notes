@@ -9,13 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const osascript = require("node-osascript");
+const { sortClients } = require("../clients");
 const fs = require("fs").promises;
 function parseAndAdd(text) {
     return __awaiter(this, void 0, void 0, function* () {
         const date = text.split("~")[0];
         const parsedNotes = yield parse(text.split("~")[1]);
+        console.log({ parsedNotes });
         let newClients = {};
-        parsedNotes.map(note => {
+        parsedNotes.map((note) => {
             const id = note.name + "-" + date;
             newClients[id] = Object.assign(Object.assign({}, note), { date });
         });
@@ -28,7 +30,7 @@ function parseAndAdd(text) {
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
         let note = "";
-        text.split("\\n").map(line => note += "\n" + line);
+        text.split("\\n").map((line) => (note += "\n" + line));
         note = note.trim();
         let parsedNotes = [];
         const clientNotes = note.split("\n\n");
@@ -37,69 +39,113 @@ function parse(text) {
             const name = subNote.split(":")[0];
             let restOfNote = "";
             restOfNote = restOfNote.replace(/$\s+|\s+$/gm, "");
-            const splitSections = subNote.split(":").slice(1);
-            for (let i = 0; i < splitSections.length; i++) {
-                const current = splitSections[i];
-                restOfNote += current;
-                if (i != splitSections.length - 1) {
-                    restOfNote += ":";
+            if (!subNote.toUpperCase().includes("SALT")) {
+                const splitSections = subNote.split(":").slice(1);
+                for (let i = 0; i < splitSections.length; i++) {
+                    const current = splitSections[i];
+                    restOfNote += current;
+                    if (i != splitSections.length - 1) {
+                        restOfNote += ":";
+                    }
                 }
-            }
-            const splitByLines = restOfNote.split("\n");
-            const subject = clean(splitByLines[0]);
-            const last = splitByLines[splitByLines.length - 1];
-            const secondToLast = splitByLines[splitByLines.length - 2];
-            let objectives = "";
-            for (let i = 1; i < splitByLines.length - 2; i++) {
-                let current = clean(splitByLines[i]);
-                if (i != 1) {
-                    objectives += ", ";
+                const splitByLines = restOfNote.split("\n");
+                const subject = clean(splitByLines[0]);
+                const last = splitByLines[splitByLines.length - 1];
+                const secondToLast = splitByLines[splitByLines.length - 2];
+                let objectives = "";
+                let plan = "";
+                let action = "";
+                const planWords = ["stretch", "come back", "n/a"];
+                const actionWords = ["dt", "focus", "deep tissue", "worked on"];
+                for (let i = 1; i < splitByLines.length - 2; i++) {
+                    let current = clean(splitByLines[i]);
+                    if (includes(current, planWords)) {
+                        plan = current;
+                    }
+                    else if (includes(current, actionWords)) {
+                        action = current;
+                    }
+                    else {
+                        if (i != 1) {
+                            objectives += ", ";
+                        }
+                        objectives += current;
+                    }
                 }
-                objectives += current;
-            }
-            let plan = "";
-            let action = "";
-            const planWords = ["stretch", "come back", "n/a"];
-            const actionWords = ["dt", "focus", "deep tissue", "worked on"];
-            const shouldStretchWords = ["glute", "quad", "hamstring", "calve"];
-            if (includes(last, planWords) || includes(secondToLast, actionWords)) {
-                plan = last;
-                action = secondToLast;
-            }
-            else if (includes(last, actionWords)) {
-                objectives = updateObjectives(objectives, secondToLast);
-                action = last;
-                //doesn't set plan
+                if (plan == "") {
+                    if (includes(last, planWords)) {
+                        plan = last;
+                    }
+                    else if (includes(secondToLast, planWords)) {
+                        plan = secondToLast;
+                    }
+                }
+                if (action == "") {
+                    if (includes(last, actionWords)) {
+                        action = last;
+                    }
+                    else if (includes(secondToLast, actionWords)) {
+                        action = secondToLast;
+                    }
+                    else {
+                        const result = yield showMenu(last, secondToLast);
+                        if (result == last) {
+                            objectives = updateObjectives(objectives, secondToLast);
+                            action = last;
+                            //doesn't set plan
+                        }
+                        else if (result == `${secondToLast} ('${last}' as plan)`) {
+                            action = secondToLast;
+                            plan = last;
+                            //doesn't set plan
+                        }
+                        else {
+                            objectives = updateObjectives(objectives, `${clean(secondToLast)}, ${clean(last)}`);
+                            action = "focus on problem areas";
+                        }
+                    }
+                }
+                if (secondToLast != action && secondToLast != plan) {
+                    console.log("secondToLast wasn't either");
+                    objectives = updateObjectives(objectives, secondToLast);
+                }
+                if (last != action && last != plan) {
+                    console.log("last wasn't either");
+                    objectives = updateObjectives(objectives, last);
+                }
+                const shouldStretchWords = ["glute", "quad", "hamstring", "calve"];
+                if (plan == "") {
+                    if (includes(objectives, shouldStretchWords)) {
+                        plan = "stretch";
+                    }
+                    else {
+                        plan = "N/A";
+                    }
+                }
+                parsedNotes.push({ name, subject, objectives, action, plan });
             }
             else {
-                const result = yield showMenu(last, secondToLast);
-                if (result == last) {
-                    objectives = updateObjectives(objectives, secondToLast);
-                    action = last;
-                    //doesn't set plan
-                }
-                else if (result == `${secondToLast} ('${last}' as plan)`) {
-                    action = secondToLast;
-                    plan = last;
-                }
-                else {
-                    objectives = updateObjectives(objectives, `${clean(secondToLast)}, ${clean(last)}`);
-                    action = "focus on problem areas";
-                    //doesn't set plan
-                }
+                const note = yield salt(name);
+                note.plan = "come back as needed";
+                delete note.date;
+                parsedNotes.push(note);
             }
-            if (plan == "") {
-                if (includes(objectives, shouldStretchWords)) {
-                    plan = "stretch";
-                }
-                else {
-                    plan = "N/A";
-                }
-            }
-            parsedNotes.push({ name, subject, objectives, action, plan });
         }));
         yield Promise.all(promises);
         return parsedNotes;
+    });
+}
+function salt(name) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const parsedClientsString = yield fs.readFile("./soap/clients.json");
+        const parsedClients = JSON.parse(parsedClientsString);
+        let matchedClients = [];
+        Object.values(parsedClients).map((client) => {
+            if (name.toLowerCase().includes(client.name.toLowerCase())) {
+                matchedClients.push(client);
+            }
+        });
+        return sortClients(matchedClients)[matchedClients.length - 1];
     });
 }
 function updateObjectives(currentObjectives, string) {
@@ -113,7 +159,7 @@ function clean(text) {
 }
 function includes(string, searches) {
     let doesInclude = false;
-    searches.map(search => {
+    searches.map((search) => {
         if (string.toLowerCase().includes(search))
             doesInclude = true;
     });
@@ -124,7 +170,7 @@ function showMenu(last, secondToLast) {
         osascript.execute('display dialog "Which is the Action?" buttons {op1, op2, op3}\nset DlogResult to result\n return result', {
             op1: last,
             op2: `${secondToLast} ('${last}' as plan)`,
-            op3: "focus on problem areas"
+            op3: "focus on problem areas",
         }, function (err, result, raw) {
             if (err)
                 return reject(err);

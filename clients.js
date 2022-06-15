@@ -39,10 +39,10 @@ function sanatizedClients(clientsObj) {
 function sortClients(clientsObj) {
 
 	const newArr = Object.values(clientsObj).sort((a, b) => {
-		return new Date(b.date).getTime() - new Date(a.date).getTime()
+		return new Date(a.date).getTime() - new Date(b.date).getTime()
 	})
 
-	return newArr.reverse()
+	return newArr
 }
 
 function matchClients() {
