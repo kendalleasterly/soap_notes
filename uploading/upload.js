@@ -1,8 +1,11 @@
 const {matchClients} = require("../clients");
-const finishedClients = require("./finishedClients.json");
+const fs = require("fs/promises")
 
 async function matchAndUpload(page) {
 	const matches = matchClients();
+
+	const finishedClientsString = await fs.readFile("./uploading/finishedClients.json")
+	const finishedClients = JSON.parse(finishedClientsString)
 
 	let clientsToUpload = [];
 
@@ -10,7 +13,7 @@ async function matchAndUpload(page) {
 		if (!finishedClients.includes(match.link)) clientsToUpload.push(match);
 	});
 
-	submitNotes(page, clientsToUpload)
+	await submitNotes(page, clientsToUpload)
 }
 
 async function submitNotes(page, clients) {
@@ -54,6 +57,10 @@ async function submitNotes(page, clients) {
 	setTimeout(async () => {
 		await page.click("button.items-center.btn.btn-black");
 		console.log(`finished ${client.name}!`);
+
+		const finishedClientsString = await fs.readFile("./uploading/finishedClients.json")
+		const finishedClients = JSON.parse(finishedClientsString)
+
 		const newFinished = [...finishedClients, client.link];
 		await fs.writeFile(
 			"./uploading/finishedClients.json",

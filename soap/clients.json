@@ -825,51 +825,51 @@
   },
   "David-2022-06-02": {
     "name": "David",
-    "subject": "Improved half performance post massage, wants the same thing…David: Improved half performance post massage, wants the same thing as last time",
+    "subject": "Improved half performance post massage, wants the same thing",
     "objectives": "HT/Tight:  same as last time",
     "action": "Swedish on full body",
     "plan": "N/A",
     "date": "2022-06-02"
   },
-  "Jeff-2022-06-07": {
+  "Jeff-2022-06-04": {
     "name": "Jeff",
     "subject": "Shoulders, glutes (stretch), calves, hamstrings, neck",
     "objectives": "HT/Tight: traps, esg, glute med, hamstrings, calves, quads, neck",
     "action": "DT on problem areas, glute stretches ",
     "plan": "come back for longer sessions",
-    "date": "2022-06-07"
+    "date": "2022-06-04"
   },
-  "Tabitha-2022-06-07": {
+  "Tabitha-2022-06-04": {
     "name": "Tabitha",
     "subject": "Back and glutes; nurse",
     "objectives": "HT/Tight: traps, lev scap, rhomboids, esg, QL, glutes (med+), hamstrings, calves, quads, neck",
     "action": "DT on full body no arms ",
     "plan": "come back soon",
-    "date": "2022-06-07"
+    "date": "2022-06-04"
   },
-  "Devin-2022-06-07": {
+  "Devin-2022-06-04": {
     "name": "Devin",
     "subject": "Traps and legs",
     "objectives": "HT/Tight: traps, esg, ql, glutes, hamstrings, quads,neck",
     "action": "DT on full body",
     "plan": "come back as needed",
-    "date": "2022-06-07"
+    "date": "2022-06-04"
   },
-  "Chani-2022-06-07": {
+  "Chani-2022-06-04": {
     "name": "Chani",
     "subject": "stressed, feeling tension in back",
     "objectives": "HT/Tight: traps, rhomboids, esg, ql (all suuupperrr tight… not much give during session), glutes (med+), hamstrings, quads, calves, neck +++, pecs",
     "action": "FBDT",
     "plan": "come back soon!!",
-    "date": "2022-06-07"
+    "date": "2022-06-04"
   },
-  "Brooke-2022-06-09": {
+  "Brooke-2022-06-07": {
     "name": "Brooke",
     "subject": "back tension",
     "objectives": "traps, esg ,rhomboids, glutes, pecs, neck",
     "action": "DT on problem areas ",
     "plan": "stretch and come back soon",
-    "date": "2022-06-09"
+    "date": "2022-06-07"
   },
   "Ashley-2022-06-14": {
     "name": "Ashley",
@@ -910,5 +910,37 @@
     "action": "chair on table; DT work on problem areas ",
     "plan": "come back for full table",
     "date": "2022-06-14"
+  },
+  "Chandler-2022-06-09": {
+    "name": "Chandler",
+    "subject": "R hip bothering C, tension in shoulders",
+    "objectives": "HT/Tight: traps (++), rhomboids (+), QL sensitive and tight, glutes (med+, R+), hamstrings (L+), quads (R+), tfl (R+)",
+    "action": "glute med stretches and DT on problem areas ",
+    "plan": "stretch and come back soon",
+    "date": "2022-06-09"
+  },
+  "Anjali-2022-06-09": {
+    "name": "Anjali",
+    "subject": "tension in shoulders and back",
+    "objectives": "HT/Tight: traps, rhomboids, esg (L+), QL, pecs, neck",
+    "action": "DT on problem areas ",
+    "plan": "stretch and come back soon",
+    "date": "2022-06-09"
+  },
+  "Nabil-2022-06-09": {
+    "name": "Nabil",
+    "subject": "No complaints",
+    "objectives": "Body was in decent condition; huge TP in R trap, traps tight BL",
+    "action": "DT on back and neck, Swedish on legs and arms ",
+    "plan": "N/A",
+    "date": "2022-06-09"
+  },
+  "Kasey-2022-06-09": {
+    "name": "Kasey",
+    "subject": "tension in shoulders and neck",
+    "objectives": "HT/Tight: traps, neck muscles, rhomboids, esg, ql, quads, hamstrings",
+    "action": "DT w focus on upper back and neck",
+    "plan": "come back for more work as needed",
+    "date": "2022-06-09"
   }
 }

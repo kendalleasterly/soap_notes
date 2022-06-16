@@ -49,7 +49,7 @@ function matchClients() {
 	let matches = []
 
 	Object.values(soapedClientsJSON).map((sClient) => {
-		indexedClients.map((iClient) => {
+		Object.values(indexedClients).map((iClient) => {
 			if (iClient.date == sClient.date) {
 				if (iClient.name.toLowerCase().includes(sClient.name.toLowerCase())) {
 					//we've found a match

@@ -2,7 +2,8 @@ const {startSession} = require("./puppeteer/puppeteer");
 const {indexClients} = require("./indexing/index-clients");
 const {parseAndAdd} = require("./soap/parse-soap");
 const { sortClients, generateNotUploaded } = require("./clients");
-const clients = require("./soap/clients.json")
+const clients = require("./soap/clients.json");
+const { matchAndUpload } = require("./uploading/upload");
 
 const readline = require("readline").createInterface({
 	input: process.stdin,
@@ -21,7 +22,11 @@ async function main(givenInput) {
 		// console.log("~" + sortedClients[0].date)
 		console.log("~" + sortedClients[sortedClients.length - 1].date) //production
 
-	} else {
+	} else if (input == "upload") {
+
+		await startSession(matchAndUpload)
+
+	} else{
 		await parseAndAdd(input);
 
 		//make sure the parsing file puts this into the database
@@ -38,7 +43,5 @@ async function getInput() {
 		});
 	});
 }
-
-// const text = "2022-05-12~Kyle: general\ntensed up during whole session, kept reminding to relax; HT/Tight: Traps esg QL (L+) glutes hamstrings quads calves \nFBDT\nN/A\n\nCarroll: whole body tension; took a trip recently, slept weird; neck, shoulders, and lower body \ntraps, rhomboids, esg, ql (R+), glutes (R+), hamstrings, calves, neck, pecs (L+)\nMed pressure full body\ncome back w/in two weeks \n\nTomas: SALT"
 
 main()

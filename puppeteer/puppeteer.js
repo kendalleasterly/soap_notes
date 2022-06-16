@@ -20,10 +20,10 @@ async function startSession(func) {
 	})
 
 	if (new Date().getTime() / 1000 >= cookies[1].expires) {
-		await logIn(page)
+		// await logIn(page)
 	}
 
-	// await func(page)
+	await func(page)
 
 	// await browser.close()
 }
