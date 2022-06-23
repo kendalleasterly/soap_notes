@@ -28,8 +28,6 @@ async function main(givenInput) {
 
 	} else{
 		await parseAndAdd(input);
-
-		//make sure the parsing file puts this into the database
 	}
 }
 

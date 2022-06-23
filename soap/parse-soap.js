@@ -39,7 +39,16 @@ function parse(text) {
             const name = subNote.split(":")[0];
             let restOfNote = "";
             restOfNote = restOfNote.replace(/$\s+|\s+$/gm, "");
-            if (!subNote.toUpperCase().includes("SALT")) {
+            if (subNote.toUpperCase().includes("SALT")) {
+                const note = yield salt(name);
+                note.plan = "come back as needed";
+                delete note.date;
+                parsedNotes.push(note);
+            }
+            else if (subNote.trim().split("\n").length <= 1) {
+                console.log(subNote, "didn't have enough lines");
+            }
+            else {
                 const splitSections = subNote.split(":").slice(1);
                 for (let i = 0; i < splitSections.length; i++) {
                     const current = splitSections[i];
@@ -123,12 +132,6 @@ function parse(text) {
                     }
                 }
                 parsedNotes.push({ name, subject, objectives, action, plan });
-            }
-            else {
-                const note = yield salt(name);
-                note.plan = "come back as needed";
-                delete note.date;
-                parsedNotes.push(note);
             }
         }));
         yield Promise.all(promises);

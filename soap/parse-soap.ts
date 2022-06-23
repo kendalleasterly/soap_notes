@@ -41,14 +41,28 @@ async function parse(text: string) {
 
 	const clientNotes = note.split("\n\n")
 	const promises = clientNotes.map(async (rawSubNote) => {
+
 		const subNote = rawSubNote.replace(/^\s+|\s+$/g, "")
 		const name = subNote.split(":")[0]
 
 		let restOfNote = ""
 		restOfNote = restOfNote.replace(/$\s+|\s+$/gm, "")
 
-		if (!subNote.toUpperCase().includes("SALT")) {
+		if (subNote.toUpperCase().includes("SALT")) {
+
+			const note:any = await salt(name)
+            note.plan = "come back as needed"
+            delete note.date
+
+            parsedNotes.push(note)
+
+		} else if (subNote.trim().split("\n").length <= 1) {
+
+			console.log(subNote, "didn't have enough lines")
+
+		} else {
 			const splitSections = subNote.split(":").slice(1)
+
 			for (let i = 0; i < splitSections.length; i++) {
 				const current = splitSections[i]
 
@@ -146,11 +160,6 @@ async function parse(text: string) {
 			}
 
 			parsedNotes.push({ name, subject, objectives, action, plan })
-		} else {
-            const note:any = await salt(name)
-            note.plan = "come back as needed"
-            delete note.date
-            parsedNotes.push(note)
 		}
 	})
 
