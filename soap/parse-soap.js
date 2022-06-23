@@ -29,9 +29,14 @@ function parseAndAdd(text) {
 }
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
+        // console.log("TEXT")
         let note = "";
-        text.split("\\n").map((line) => (note += "\n" + line));
-        note = note.trim();
+        // console.log(text)
+        // console.log("NOTE")
+        text.split(`\\n`).map((line) => (note += `\n` + line));
+        note = note.replace(/^\s+|\s+$/g, "");
+        // console.log(note)
+        // console.log("end")
         let parsedNotes = [];
         const clientNotes = note.split("\n\n");
         const promises = clientNotes.map((rawSubNote) => __awaiter(this, void 0, void 0, function* () {
@@ -47,6 +52,9 @@ function parse(text) {
             }
             else if (subNote.trim().split("\n").length <= 1) {
                 console.log(subNote, "didn't have enough lines");
+            }
+            else if (!subNote.includes(":")) {
+                console.log("didn't have colon");
             }
             else {
                 const splitSections = subNote.split(":").slice(1);

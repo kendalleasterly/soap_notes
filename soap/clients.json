@@ -40,12 +40,12 @@
     "action": "DT on back and neck"
   },
   "Ryan-2022-03-31": {
-    "objectives": ", traps QL glute med hamstrings calves feet and neck ",
-    "date": "2022-03-31",
-    "subject": " runner; goes to the gym ",
     "name": "Ryan",
+    "subject": "runner; goes to the gym",
+    "objectives": "traps QL glute med hamstrings calves feet and neck",
+    "action": "DT on problem areas",
     "plan": "stretch",
-    "action": "DT on problem areas "
+    "date": "2022-03-31"
   },
   "Tabitha-2022-04-09": {
     "objectives": "traps esg QL tight, no time for neck C came 10 min late ",
@@ -312,12 +312,12 @@
     "action": "UBDT "
   },
   "chris-2022-03-31": {
-    "objectives": ", traps (L+) lev scap splenii SCM scalenes esg all tight , Back and neck ",
-    "date": "2022-03-31",
-    "subject": " migraines; tight neck and back",
     "name": "chris",
+    "subject": "migraines; tight neck and back",
+    "objectives": "traps (L+) lev scap splenii SCM scalenes esg all tight, Back and neck, traps (L+) lev scap splenii SCM scalenes esg all tight, Back and neck",
+    "action": "focus on problem areas",
     "plan": "N/A",
-    "action": "focus on problem areas"
+    "date": "2022-03-31"
   },
   "Siri-2022-03-15": {
     "objectives": "traps esg (L+) QL, pecs triceps RTC (infraspinatus+), compressions on lower extremities ",
@@ -658,7 +658,7 @@
   "Richard-2022-03-03": {
     "name": "Richard",
     "subject": "lower back pain, tight hamstrings",
-    "objectives": "hamstrings, glute med, QL on both sides but L side is way worse, L hip hiked ab 1 in from golfing, levator scapula, rhomboids, rotator cuff muscles (infraspinatus, teres minor, teres major)*, lats*, erector spinae group, quads* (vastus lateralis)*, adductors*, gracilis*, posterior neck muscles",
+    "objectives": "hamstrings, glute med, QL on both sides but L side is way worse, L hip hiked ab 1 in from golfing, levator scapula, rhomboids, rotator cuff muscles (infraspinatus, teres minor, teres major)*, lats*, erector spinae group, quads* (vastus lateralis)*, adductors*, gracilis*, posterior neck muscles, gracilis*, posterior neck muscles",
     "action": "focus on problem areas",
     "plan": "stretch",
     "date": "2022-03-03"
@@ -666,7 +666,7 @@
   "Angela-2022-03-03": {
     "name": "Angela",
     "subject": "tennis player; tight glutes, quads",
-    "objectives": "traps really sensitive and tight, lev scap, rhomboids, esg, glute med, glute max on L, L hamstrings, quads R+, neck super tight, back, hams, calves, quads, neck",
+    "objectives": "traps really sensitive and tight, lev scap, rhomboids, esg, glute med, glute max on L, L hamstrings, quads R+, neck super tight, back, hams, calves, quads, neck, neck super tight, back, hams, calves, quads, neck",
     "action": "focus on problem areas",
     "plan": "stretch",
     "date": "2022-03-03"
@@ -682,7 +682,7 @@
   "Maria-2022-03-03": {
     "name": "Maria",
     "subject": "everywhere hurts; neck, lower back, quads, adductors, feet",
-    "objectives": "traps, lev scap, rhomboids, rtc, lats, esg, quads (vast lat) (R+), adductors (R+), neck, back, quads, adductors, neck, feet oh h",
+    "objectives": "traps, lev scap, rhomboids, rtc, lats, esg, quads (vast lat) (R+), adductors (R+), neck, back, quads, adductors, neck, feet oh h, neck, back, quads, adductors, neck, feet oh h",
     "action": "focus on problem areas",
     "plan": "stretch",
     "date": "2022-03-03"
@@ -755,14 +755,14 @@
     "name": "Ellen",
     "subject": "Baker; shoulders and neck discomfort",
     "objectives": "L+++ (Leans on L side), traps, rhomboids, lev scap, EsG lengthened and tight, posterior neck muscles, pecs and biceps HT, hamstrings (L), flutes (L), quads L",
-    "action": "DT on problem areas and compressions on lower body ",
+    "action": "DT on problem areas and compressions on lower body",
     "plan": "stretch",
     "date": "2022-02-24"
   },
   "Kristin-2022-02-24": {
     "name": "Kristin",
     "subject": "works at desk; shoulder and neck discomfort",
-    "objectives": "traps (btw neck and mid trap little to jo release), rhomboids (some release), lower esg and ql, neck muscles inc scalenes and SCM, forearms",
+    "objectives": "traps (btw neck and mid trap little to jo release), rhomboids (some release), lower esg and ql, neck muscles inc scalenes and SCM, forearms, neck muscles inc scalenes and SCM, forearms",
     "action": "focus on problem areas",
     "plan": "N/A",
     "date": "2022-02-24"
@@ -770,7 +770,7 @@
   "Dalaine-2022-02-24": {
     "name": "Dalaine",
     "subject": "first massage since pandemic",
-    "objectives": "traps rhomboids esg glutes quads neck",
+    "objectives": "first massage since pandemic, traps rhomboids esg glutes quads neck, first massage since pandemic, traps rhomboids esg glutes quads neck",
     "action": "focus on problem areas",
     "plan": "stretch",
     "date": "2022-02-24"
@@ -974,5 +974,61 @@
     "action": "Whole back (traps rhomboids lev scap esg) tight",
     "plan": "N/A",
     "date": "2022-02-15"
+  },
+  "warren-2022-02-12": {
+    "name": "warren",
+    "subject": "started 20 min late",
+    "objectives": "right hamstrings and quads tight",
+    "action": "deep tissue on back compressions everywhere else",
+    "plan": "stretch",
+    "date": "2022-02-12"
+  },
+  "oliver-2022-02-12": {
+    "name": "oliver",
+    "subject": "runner, itb pain",
+    "objectives": "Low esg, glutes R+, hamstrings, calves, quads, tfl, quads, tfl",
+    "action": "focus on problem areas",
+    "plan": "stretch",
+    "date": "2022-02-12"
+  },
+  "colleen-2022-02-12": {
+    "name": "colleen",
+    "subject": "tight shoulders and low back",
+    "objectives": "traps, rhomboids, ESG, QL, glutes R+, hamstrings, calves, quads super tight, RTC r+, quads super tight, RTC r+",
+    "action": "focus on problem areas",
+    "plan": "stretch",
+    "date": "2022-02-12"
+  },
+  "kathy-2022-02-10": {
+    "name": "kathy",
+    "subject": "tight shoulders neck and pecs and lower back",
+    "objectives": "L side tighter for everything, traps esg ql pec maj and min neck mucles, glutes, R hamstring tighter, R hamstring tighter",
+    "action": "used heat on L flutes and hamstrings",
+    "plan": "stretch",
+    "date": "2022-02-10"
+  },
+  "daileen-2022-02-08": {
+    "name": "daileen",
+    "subject": "tight traps and neck and headaches",
+    "objectives": "traps lev scap neck muscles all super tight like bricks",
+    "action": "focus on problem areas",
+    "plan": "N/A",
+    "date": "2022-02-08"
+  },
+  "brett-2022-02-08": {
+    "name": "brett",
+    "subject": "relaxation",
+    "objectives": "traps tight",
+    "action": "focus on problem areas",
+    "plan": "N/A",
+    "date": "2022-02-08"
+  },
+  "Namhoon-2022-02-05": {
+    "name": "Namhoon",
+    "subject": "shoulders",
+    "objectives": "kept shirt on during session, traps were tight, low back was very very tight almost immobile, hamstrings a little tight, low back was very very tight almost immobile, hamstrings a little tight",
+    "action": "focus on problem areas",
+    "plan": "stretch",
+    "date": "2022-02-05"
   }
 }

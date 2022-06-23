@@ -33,14 +33,20 @@ async function parseAndAdd(text: string) {
 }
 
 async function parse(text: string) {
+	// console.log("TEXT")
 	let note = ""
-	text.split("\\n").map((line) => (note += "\n" + line))
-	note = note.trim()
+	// console.log(text)
+	// console.log("NOTE")
+	text.split(`\\n`).map((line) => (note += `\n` + line))
+	note = note.replace(/^\s+|\s+$/g, "")
+	// console.log(note)
+	// console.log("end")
 
 	let parsedNotes: SoapNote[] = []
 
 	const clientNotes = note.split("\n\n")
 	const promises = clientNotes.map(async (rawSubNote) => {
+
 
 		const subNote = rawSubNote.replace(/^\s+|\s+$/g, "")
 		const name = subNote.split(":")[0]
@@ -60,6 +66,8 @@ async function parse(text: string) {
 
 			console.log(subNote, "didn't have enough lines")
 
+		} else if (!subNote.includes(":")) {
+			console.log("didn't have colon")
 		} else {
 			const splitSections = subNote.split(":").slice(1)
 
