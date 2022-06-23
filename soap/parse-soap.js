@@ -29,14 +29,9 @@ function parseAndAdd(text) {
 }
 function parse(text) {
     return __awaiter(this, void 0, void 0, function* () {
-        // console.log("TEXT")
         let note = "";
-        // console.log(text)
-        // console.log("NOTE")
         text.split(`\\n`).map((line) => (note += `\n` + line));
         note = note.replace(/^\s+|\s+$/g, "");
-        // console.log(note)
-        // console.log("end")
         let parsedNotes = [];
         const clientNotes = note.split("\n\n");
         const promises = clientNotes.map((rawSubNote) => __awaiter(this, void 0, void 0, function* () {
@@ -51,7 +46,7 @@ function parse(text) {
                 parsedNotes.push(note);
             }
             else if (subNote.trim().split("\n").length <= 1) {
-                console.log(subNote, "didn't have enough lines");
+                showDialogue(`Please finish note \n'${subNote}'`);
             }
             else if (!subNote.includes(":")) {
                 console.log("didn't have colon");
@@ -114,19 +109,25 @@ function parse(text) {
                         else if (result == `${secondToLast} ('${last}' as plan)`) {
                             action = secondToLast;
                             plan = last;
-                            //doesn't set plan
                         }
                         else {
-                            objectives = updateObjectives(objectives, `${clean(secondToLast)}, ${clean(last)}`);
+                            console.log({ secondToLast });
+                            if (subject.trim().includes(secondToLast.trim())) {
+                                console.log("subject was similar to second to last:");
+                                objectives = updateObjectives(objectives, `${clean(last)}`);
+                            }
+                            else {
+                                objectives = updateObjectives(objectives, `${clean(secondToLast)}, ${clean(last)}`);
+                            }
                             action = "focus on problem areas";
                         }
                     }
                 }
-                if (secondToLast != action && secondToLast != plan) {
+                if (secondToLast.trim() != action.trim() && secondToLast.trim() != plan.trim() && !subject.trim().includes(secondToLast.trim())) {
                     console.log("secondToLast wasn't either");
                     objectives = updateObjectives(objectives, secondToLast);
                 }
-                if (last != action && last != plan) {
+                if (last.trim() != action.trim() && last.trim() != plan.trim() && !subject.trim().includes(last.trim())) {
                     console.log("last wasn't either");
                     objectives = updateObjectives(objectives, last);
                 }
@@ -152,7 +153,7 @@ function salt(name) {
         const parsedClients = JSON.parse(parsedClientsString);
         let matchedClients = [];
         Object.values(parsedClients).map((client) => {
-            if (name.toLowerCase().includes(client.name.toLowerCase())) {
+            if (name.toLowerCase().trim().includes(client.name.toLowerCase().trim())) {
                 matchedClients.push(client);
             }
         });
@@ -160,10 +161,17 @@ function salt(name) {
     });
 }
 function updateObjectives(currentObjectives, string) {
-    if (currentObjectives != "") {
-        currentObjectives += ", ";
+    console.log({ currentObjectives, string });
+    if (!currentObjectives.trim().includes(string.trim())) {
+        if (currentObjectives != "") {
+            currentObjectives += ", ";
+        }
+        return currentObjectives + clean(string);
     }
-    return currentObjectives + clean(string);
+    else {
+        console.log("update objectives had duplicate");
+        return currentObjectives;
+    }
 }
 function clean(text) {
     return text.replace(/^[-\s]+|\s+$/gm, "");
@@ -188,6 +196,15 @@ function showMenu(last, secondToLast) {
             let returnValue;
             returnValue = result["button returned"];
             resolve(returnValue);
+        });
+    });
+}
+function showDialogue(message) {
+    return new Promise((resolve, reject) => {
+        osascript.execute("display dialog message", { message }, (err, result, raw) => {
+            if (err) {
+                console.log("was error", err);
+            }
         });
     });
 }

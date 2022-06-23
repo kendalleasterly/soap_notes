@@ -1030,5 +1030,45 @@
     "action": "focus on problem areas",
     "plan": "stretch",
     "date": "2022-02-05"
+  },
+  "Dana-2022-06-16": {
+    "name": "Dana",
+    "subject": "upper back and neck tension; general massage",
+    "objectives": "HT/Tight: traps, rhomboids, esg, ql, glutes (med +, R+), hamstrings (L+), soleus, quads (R+), pecs, neck",
+    "action": "FBDT no anterior arm ",
+    "plan": "stretch pecs",
+    "date": "2022-06-16"
+  },
+  "Alex-2022-06-16": {
+    "name": "Alex",
+    "subject": "just back",
+    "objectives": "traps and ql were HT and sensitive",
+    "action": "only had time for back and neck C started 10 min late ",
+    "plan": "come back as needed",
+    "date": "2022-06-16"
+  },
+  "Kandlyn-2022-06-18": {
+    "name": "Kandlyn",
+    "subject": "herniated cervical disks (L side); tension in neck and shoulders; rq work on feet",
+    "objectives": "Tight: Traps ++, rhomboids ++ (L+), esg (L+), QL(L+), neck muscles (R+)",
+    "action": "focus on problem areas",
+    "plan": "N/A",
+    "date": "2022-06-18"
+  },
+  "Grace-2022-06-18": {
+    "name": "Grace",
+    "subject": "chronic tension in left side of neck and left shoulder",
+    "objectives": "Tight: traps (L+), rhomboids (L+), esg (L+), QL (L+), pecs, neck",
+    "action": "focus on problem areas",
+    "plan": "N/A",
+    "date": "2022-06-18"
+  },
+  "Sierra-2022-06-21": {
+    "name": "Sierra",
+    "subject": "just back and neck",
+    "objectives": "Tight: traps, rhomboids, ql, all neck muscles",
+    "action": "DT on back and neck ",
+    "plan": "come back for more work on neck and stretch neck",
+    "date": "2022-06-21"
   }
 }
