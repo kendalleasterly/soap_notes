@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer")
 const dotenv = require("dotenv")
 const fs = require("fs").promises
 const cookies = require("./cookies.json")
+const { setTimeout } = require("timers/promises")
 
 dotenv.config()
 const url = "https://rivernorthmassage.quickernotes2.com/app/unfinished-notes"
@@ -20,6 +21,7 @@ async function startSession(func) {
 	})
 
 	if (new Date().getTime() / 1000 >= cookies[1].expires) {
+		console.log("log in")
 		await logIn(page)
 	}
 
@@ -32,6 +34,8 @@ async function startSession(func) {
 
 async function logIn(page) {
 	console.log("logging in")
+
+	await setTimeout(1 * 1000)
 
 	await page.type("[type=text]", "gabbyeasterly")
 	await page.type("[type=password]", process.env.ACCOUNT_PASSWORD)

@@ -1,5 +1,6 @@
 const {matchClients} = require("../clients");
-const fs = require("fs/promises")
+const fs = require("fs/promises");
+const { setTimeout } = require("timers/promises");
 
 async function matchAndUpload(page) {
 	const matches = matchClients();
@@ -44,6 +45,8 @@ async function submitNotes(page, clients) {
 			<p>${clean(client.plan)}</p>
 			`;
 
+	console.log(note)
+
 	await page.$eval(
 		"div.fr-wrapper div.fr-element.fr-view",
 		(element, note) => {
@@ -53,21 +56,24 @@ async function submitNotes(page, clients) {
 	);
 
 	await page.click("button.items-center.btn.btn-black");
+	console.log("clicked")
 
-	setTimeout(async () => {
-		await page.click("button.items-center.btn.btn-black");
-		console.log(`finished ${client.name}!`);
+	await setTimeout(2.5 * 1000)
 
-		const finishedClientsString = await fs.readFile("./uploading/finishedClients.json")
-		const finishedClients = JSON.parse(finishedClientsString)
+	await page.click("button.items-center.btn.btn-black");
+	console.log(`finished ${client.name}!`);
 
-		const newFinished = [...finishedClients, client.link];
-		await fs.writeFile(
-			"./uploading/finishedClients.json",
-			JSON.stringify(newFinished, null, 2)
-		);
-		await submitNotes(page, clients);
-	}, 2500);
+	const finishedClientsString = await fs.readFile("./uploading/finishedClients.json")
+	const finishedClients = JSON.parse(finishedClientsString)
+
+	const newFinished = [...finishedClients, client.link];
+	await fs.writeFile(
+		"./uploading/finishedClients.json",
+		JSON.stringify(newFinished, null, 2)
+	);
+	await submitNotes(page, clients);
+	
+	await setTimeout(5 * 1000)
 }
 
 //MARK: Helper functions

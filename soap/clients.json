@@ -1070,5 +1070,45 @@
     "action": "DT on back and neck ",
     "plan": "come back for more work on neck and stretch neck",
     "date": "2022-06-21"
+  },
+  "amanda-2022-06-28": {
+    "name": "amanda",
+    "subject": "general; no complaints",
+    "objectives": "HT/Tight: upper and lower traps, glutes, L hamstrings, soleus, quads (R+), pecs (L+), neck (L+)",
+    "action": "FBRM w some DT on legs ",
+    "plan": "come back as needed",
+    "date": "2022-06-28"
+  },
+  "Jack-2022-06-28": {
+    "name": "Jack",
+    "subject": "hamstrings, quads, low back",
+    "objectives": "HT/Tight: Low esg, glute med, tfl, hamstrings, gastroc, quads (R+)",
+    "action": "DT in problem areas ",
+    "plan": "come back as needed",
+    "date": "2022-06-28"
+  },
+  "ashley-2022-06-28": {
+    "name": "ashley",
+    "subject": "general; relaxation",
+    "objectives": "HT/Tight: Traps, glute med, soleus, quads (R+), pecs (R+), forearm (R+), neck (L+)",
+    "action": "FBRM compressions in hamstrings and calves ",
+    "plan": "come back as needed",
+    "date": "2022-06-28"
+  },
+  "karla-2022-06-30": {
+    "name": "karla",
+    "subject": "back hurts; carrie’s child w r arm and leans on R leg; feels…karla: back hurts; carrie’s child w r arm and leans on R leg; feels like knot in r lateral thigh",
+    "objectives": "HT/Tight: Traps (R+), QL, rhomboids, pecs (R+), all neck muscles, Quads (vast lat and rec fem on R side and all on left)",
+    "action": "DT on problem areas ",
+    "plan": "come back soon",
+    "date": "2022-06-30"
+  },
+  "Adam-2022-06-30": {
+    "name": "Adam",
+    "subject": "upper body tension (neck, pecs, arms, btw scap)",
+    "objectives": "HT/Tight: R trap, R rhomboids, QL bilat, Pecs (L+), all neck muscles",
+    "action": "DT on problem areas ",
+    "plan": "come back as needed",
+    "date": "2022-06-30"
   }
 }
